@@ -17,12 +17,12 @@ spring.security.oauth2.client.registration.github.client-secret=<client secret>
 spring.security.oauth2.client.registration.line.client-id=<client id>
 spring.security.oauth2.client.registration.line.client-secret=<client secret>
 ```
-3. Set the callback URL to `http://localhost:8080/login/oauth2/code/github` for `Github` and `http://localhost:8080/login/oauth2/code/line` for `@Line`, respectively.
-4. Go to the project root folder(`cd spring-boot-auth`).
-5. Build the project(`mvn package`).
-6. Run the Jar file in target folder.
-7. Open the Browser and navigate to `http://localhost:8080/`
-8. Login with "`testuser`" and "`password`" or your `Github` and `@Line` account.
+* Set the `callback URL` to `http://localhost:8080/login/oauth2/code/github` for `Github` and `http://localhost:8080/login/oauth2/code/line` for `@Line`, respectively.
+3. Go to the project root folder(`cd spring-boot-auth`).
+4. Build the project(`mvn package`).
+5. Run the Jar file in target folder.
+6. Open the Browser and navigate to `http://localhost:8080/`
+7. Login with "`testuser`" and "`password`" or your `Github` and `@Line` account.
 
 ## Technology Stack
 | Technology               | Name            |
