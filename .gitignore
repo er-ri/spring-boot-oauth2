@@ -1,0 +1,21 @@
+### .gitignore not working
+!git rm -r --cached .        #untrack files
+!git add .                   #re-adding the files
+!git commit -m "issue fixed" #commiting changes
+!git push                    #pushing changes
+target/
+bin/
+derby.log
+mvnw
+mvnw.cmd
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.classpath
+.factorypath
+.project
+.settings
+
+

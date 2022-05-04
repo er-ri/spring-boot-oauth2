@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<!-- basic -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- mobile metas -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+<!-- site metas -->
+<link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+<title>Spring Security Example</title>
+</head>
+<body class="main-layout">
+	<div class="container">
+		<div>
+
+		</div>
+
+		<form th:action="@{/login}" method="post" class="login-form">
+			<h3>Login Here</h3>
+
+			<label for="username"><b>User name</b></label> <input type="text"
+				placeholder="Enter Username" name="username" /> <label
+				for="password"><b>Password</b></label> <input type="password"
+				placeholder="Enter Password" name="password" />
+			<div>
+				<input type="submit" value="Sign In" />
+			</div>
+
+			<div class="social">
+				<div class="github">
+					<a href="/login/oauth2/authorization/github">GitHub</a>
+				</div>
+				<div class="line">
+					<a href="/login/oauth2/authorization/line">@Line</a>
+				</div>
+			</div>
+						<span th:if="${param.logout}">You have been logged out.</span>
+			<span th:if="${param.error}">Invalid username and password.</span>
+		</form>
+
+	</div>
+
+
+
+</body>
+</html>

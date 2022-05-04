@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<!-- basic -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- mobile metas -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+<!-- site metas -->
+<link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+<title>Hello World!</title>
+</head>
+<body>
+<div class="navbar">
+
+</div>
+
+	<div class="about">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-10 offset-md-1">
+					<div class="titlepage">
+						<h2 th:inline="text">Hello
+							[[${#httpServletRequest.remoteUser}]]!</h2>
+						<div th:if="${clientName}">
+						You are successfully logged in <span style="font-weight: bold"
+							th:text="${userName}"></span> via the OAuth 2.0 Client <span
+							style="font-weight: bold" th:text="${clientName}"></span><br>
+							Your accessToken is: 
+							<span th:text="${accessToken}"></span>
+						</div>
+					</div>
+					
+					<div class="cont">
+					<form th:action="@{/logout}" method="post">
+						<input type="submit" value="Sign Out" class="read_more"/>
+					</form>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>
