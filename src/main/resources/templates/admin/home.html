@@ -13,12 +13,10 @@
 <link rel="stylesheet" type="text/css"
 	th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}" />
 <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
-<title>Hello World!</title>
+<title>Welcome!</title>
 </head>
 <body>
-<div class="navbar">
-
-</div>
+	<div class="navbar"></div>
 
 	<div class="about">
 		<div class="container">
@@ -28,18 +26,23 @@
 						<h2 th:inline="text">Hello
 							[[${#httpServletRequest.remoteUser}]]!</h2>
 						<div th:if="${clientName}">
-						You are successfully logged in <span style="font-weight: bold"
-							th:text="${userName}"></span> via the OAuth 2.0 Client <span
-							style="font-weight: bold" th:text="${clientName}"></span><br>
-							Your accessToken is: 
-							<span th:text="${accessToken}"></span>
+							You are successfully logged in <span style="font-weight: bold"
+								th:text="${userName}"></span> via the OAuth 2.0 Client <span
+								style="font-weight: bold" th:text="${clientName}"></span><br>
+							Your accessToken is: <span th:text="${accessToken}"></span><br>
+
 						</div>
 					</div>
-					
 					<div class="cont">
-					<form th:action="@{/logout}" method="post">
-						<input type="submit" value="Sign Out" class="read_more"/>
-					</form>
+						<span th:if="${clientName == 'LINE'}"> <img
+							src="img/qr.png" alt="QR Code" width="200" height="200"> <br>
+							<a
+							th:href="@{https://line.me/R/oaMessage/@408ojspn/{id}(id=${userName})}">URL
+								scheme</a>
+						</span>
+						<form th:action="@{/logout}" method="post">
+							<input type="submit" value="Sign Out" class="read_more" />
+						</form>
 					</div>
 				</div>
 

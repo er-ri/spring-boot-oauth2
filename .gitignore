@@ -4,10 +4,10 @@
 !git commit -m "issue fixed" #commiting changes
 !git push                    #pushing changes
 target/
-bin/
 derby.log
 mvnw
 mvnw.cmd
+src/main/resources/static/img/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/

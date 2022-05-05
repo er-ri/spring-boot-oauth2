@@ -24,8 +24,6 @@ public class MyUserDetailsService implements UserDetailsService {
     }
     
     public void addUser(UserEntity user) {
-    	//System.out.println(userRepository.count()); // .save(user);
-    	UserEntity userAfter = userRepository.save(user);
-    	System.out.println(userAfter.getId());
+    	userRepository.save(user);
     }
 }

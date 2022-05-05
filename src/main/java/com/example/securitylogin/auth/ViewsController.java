@@ -15,6 +15,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -51,19 +52,16 @@ public class ViewsController {
 	}
 	
 	@RequestMapping(value = "/new", method= RequestMethod.POST)
-    public String register(HttpServletRequest request, Model model) {
-		String name;
-		String password;
-		name = request.getParameter("username");
-		password = request.getParameter("password");
-		model.addAttribute("message", "Message set in controller");
+    public String register(@RequestParam(name = "username") String name, 
+    					  	@RequestParam(name = "password") String password,
+    					  	Model model) {
 		UserEntity user = new UserEntity();
-		user.setId(1111);
 		user.setUserName(name);
 		user.setActive(true);
 		user.setPassword(password);
 		user.setRoles("ADMIN");
 		myUserDetailsService.addUser(user);
-        return "index";
+		model.addAttribute("message","User "+ name +" has been created.");
+        return "register";
     }
 }

@@ -2,8 +2,7 @@
 -- For derby
 -- See: https://stackoverflow.com/questions/38181941/i-get-this-error-error-code-30000-sql-state-42x01-syntax-error-encountered
 create table "user_table" (
-	"id" int GENERATED ALWAYS AS IDENTITY not null primary key, 
-	"user_name" varchar(255) not null,
+	"user_name" varchar(255) not null primary key,
 	"password" varchar(255) not null, 
 	"roles" varchar(255), 
 	"active" boolean not null

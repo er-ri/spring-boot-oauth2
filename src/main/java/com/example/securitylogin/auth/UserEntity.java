@@ -11,13 +11,6 @@ import javax.persistence.Table;
 @Table(name = "user_table")
 public class UserEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(
-            name = "id",
-            nullable = false
-    )
-    private int id;
-    
     @Column(
             name = "user_name",
             nullable = false
@@ -41,14 +34,6 @@ public class UserEntity {
             nullable = true
     )
     private String roles;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getUserName() {
         return userName;

@@ -37,7 +37,7 @@ import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 public class WebMvcConfig implements WebMvcConfigurer {
 	   @Override
 	   public void addViewControllers(ViewControllerRegistry registry) {
-	      //registry.addViewController("/register").setViewName("register");
+	      registry.addViewController("/register").setViewName("register");
 	      registry.addViewController("/login").setViewName("login");
 	   }
 	
