@@ -1,4 +1,4 @@
-package com.example.securitylogin.auth;
+package com.example.securitylogin.services;
 
 import java.util.Optional;
 
@@ -8,6 +8,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.example.securitylogin.domain.MyUserDetails;
+import com.example.securitylogin.domain.UserEntity;
+import com.example.securitylogin.repositories.UserRepository;
+
 @Service
 public class MyUserDetailsService implements UserDetailsService {
 
@@ -15,12 +19,13 @@ public class MyUserDetailsService implements UserDetailsService {
     UserRepository userRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        Optional<UserEntity> user = userRepository.findByUserName(userName);
+    public UserDetails loadUserByUsername(String userName){
+        UserEntity user = userRepository.findByUserName(userName);
 
-        user.orElseThrow(() -> new UsernameNotFoundException("Not found: " + userName));
-
-        return user.map(MyUserDetails::new).get();
+        if (user == null) {
+            throw new UsernameNotFoundException(userName);
+        }
+        return new MyUserDetails(user);
     }
     
     public void addUser(UserEntity user) {

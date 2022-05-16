@@ -1,9 +1,16 @@
-package com.example.securitylogin;
+package com.example.securitylogin.config;
 
 import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.catalina.Context;
+import org.apache.catalina.connector.Connector;
+import org.apache.tomcat.util.descriptor.web.SecurityCollection;
+import org.apache.tomcat.util.descriptor.web.SecurityConstraint;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
+import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -35,6 +42,7 @@ import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 @ComponentScan(basePackages = "com.example.securitylogin")
 @EnableWebMvc
 public class WebMvcConfig implements WebMvcConfigurer {
+	
 	   @Override
 	   public void addViewControllers(ViewControllerRegistry registry) {
 	      registry.addViewController("/register").setViewName("register");
@@ -54,5 +62,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
 	                        "classpath:/static/css/",
 	                        "classpath:/static/js/");
 	    }
-
+	    
+	    @Override
+	    public void addCorsMappings(CorsRegistry registry) {
+	        registry.addMapping("/**").allowedMethods("*");
+	    }
 }

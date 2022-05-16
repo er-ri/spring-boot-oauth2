@@ -1,4 +1,4 @@
-package com.example.securitylogin.auth;
+package com.example.securitylogin.controllers;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.example.securitylogin.domain.UserEntity;
+import com.example.securitylogin.services.MyUserDetailsService;
 
 
 @Controller

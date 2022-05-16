@@ -1,4 +1,4 @@
-package com.example.securitylogin.auth;
+package com.example.securitylogin.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,7 +10,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "user_table")
 public class UserEntity {
-    @Id
+	@Id
     @Column(
             name = "user_name",
             nullable = false
@@ -34,36 +34,36 @@ public class UserEntity {
             nullable = true
     )
     private String roles;
-
+    
     public String getUserName() {
-        return userName;
-    }
+		return userName;
+	}
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 
-    public String getPassword() {
-        return password;
-    }
+	public String getPassword() {
+		return password;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-    public boolean isActive() {
-        return active;
-    }
+	public boolean isActive() {
+		return active;
+	}
 
-    public void setActive(boolean active) {
-        this.active = active;
-    }
+	public void setActive(boolean active) {
+		this.active = active;
+	}
 
-    public String getRoles() {
-        return roles;
-    }
+	public String getRoles() {
+		return roles;
+	}
 
-    public void setRoles(String roles) {
-        this.roles = roles;
-    }
+	public void setRoles(String roles) {
+		this.roles = roles;
+	}
 }

@@ -1,11 +1,13 @@
-package com.example.securitylogin.auth;
+package com.example.securitylogin.repositories;
 
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import com.example.securitylogin.domain.UserEntity;
+
 public interface UserRepository extends JpaRepository<UserEntity, Integer> {
-    Optional<UserEntity> findByUserName(String userName);
+    UserEntity findByUserName(String userName);
     
 }
 

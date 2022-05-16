@@ -34,9 +34,12 @@
 						</div>
 					</div>
 					<div class="cont">
-						<span th:if="${clientName == 'LINE'}"> <img
-							src="img/qr.png" alt="QR Code" width="200" height="200"> <br>
-							<a
+						<span th:if="${clientName == 'LINE'}">
+							<div class="line-it-button" data-lang="en" data-type="friend"
+								data-env="REAL" data-lineId="@408ojspn" style="display: none;"></div>
+							<script
+								src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js"
+								async="async" defer="defer"></script><br> <a
 							th:href="@{https://line.me/R/oaMessage/@408ojspn/{id}(id=${userName})}">URL
 								scheme</a>
 						</span>

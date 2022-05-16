@@ -30,5 +30,5 @@ spring.security.oauth2.client.registration.line.client-secret=<client secret>
 | Web Framework            | Spring Boot     |
 | Authentication Framework | Spring Security |
 | Template Engine          | Thymeleaf       |
-| Database                 | Apachy Derby    |
+| Database                 | H2              |
 | Database Mappting Tool   | Hibernate       |

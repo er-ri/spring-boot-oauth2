@@ -1,4 +1,4 @@
-package com.example.securitylogin.auth;
+package com.example.securitylogin.domain;
 
 import java.util.Arrays;
 import java.util.Collection;
