@@ -1,7 +1,5 @@
 package com.example.securitylogin.services;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -28,7 +26,15 @@ public class MyUserDetailsService implements UserDetailsService {
         return new MyUserDetails(user);
     }
     
+    public UserEntity findByUserName(String userName) {
+    	return userRepository.findByUserName(userName);
+    }
+    
     public void addUser(UserEntity user) {
+    	userRepository.save(user);
+    }
+    
+    public void updateUser(UserEntity user) {
     	userRepository.save(user);
     }
 }

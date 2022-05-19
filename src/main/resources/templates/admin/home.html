@@ -25,9 +25,13 @@
 					<div class="titlepage">
 						<h2 th:inline="text">Hello
 							[[${#httpServletRequest.remoteUser}]]!</h2>
+						<h2>
+							<span th:text="${userName}"></span><br>
+							<span th:text="${lineId}"></span>
+						</h2>
 						<div th:if="${clientName}">
 							You are successfully logged in <span style="font-weight: bold"
-								th:text="${userName}"></span> via the OAuth 2.0 Client <span
+								th:text="${oAuthUserName}"></span> via the OAuth 2.0 Client <span
 								style="font-weight: bold" th:text="${clientName}"></span><br>
 							Your accessToken is: <span th:text="${accessToken}"></span><br>
 
@@ -42,7 +46,16 @@
 								async="async" defer="defer"></script><br> <a
 							th:href="@{https://line.me/R/oaMessage/@408ojspn/{id}(id=${userName})}">URL
 								scheme</a>
+							<form th:action="@{/push-message}" method="post">
+								<label for="message"><b>Push Message:</b></label> <input
+									type="text" placeholder="Input Message" name="message" /> <input
+									type="hidden" th:value="${userName}" name="username" /><input
+									type="submit" value="Push Message" class="read_more" />
+							</form>
 						</span>
+						<form th:action="@{/link-line}" method="post">
+							<input type="submit" value="Link Line" class="read_more" />
+						</form>
 						<form th:action="@{/logout}" method="post">
 							<input type="submit" value="Sign Out" class="read_more" />
 						</form>
