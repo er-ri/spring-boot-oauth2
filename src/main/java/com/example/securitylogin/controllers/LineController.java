@@ -13,11 +13,10 @@ import com.example.securitylogin.infra.line.api.v2.LineAPIService;
 public class LineController {
 	@Autowired
 	LineAPIService lineAPIService;
-	
+
 	@RequestMapping(value = "/push-message", method = RequestMethod.POST)
 	public String pushMessage(@RequestParam(name = "message") String message,
-			@RequestParam(name = "username") String username, 
-			Model model) {
+			@RequestParam(name = "username") String username, Model model) {
 		lineAPIService.pushMessage(username, message);
 		return "admin/home";
 	}

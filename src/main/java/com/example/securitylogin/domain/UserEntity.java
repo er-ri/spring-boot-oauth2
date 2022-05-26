@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "user_table")
+@Table(name = "user_entity")
 public class UserEntity {
 	@Id
     @Column(
@@ -56,10 +56,10 @@ public class UserEntity {
     private boolean active;
     
     @Column(
-            name = "roles",
+            name = "authorities",
             nullable = true
     )
-    private String roles;
+    private String authorities;
     
     public String getUserName() {
 		return userName;
@@ -85,11 +85,11 @@ public class UserEntity {
 		this.active = active;
 	}
 
-	public String getRoles() {
-		return roles;
+	public String getAuthorities() {
+		return authorities;
 	}
 
-	public void setRoles(String roles) {
-		this.roles = roles;
+	public void setAuthorities(String authorities) {
+		this.authorities = authorities;
 	}
 }

@@ -9,10 +9,10 @@ import org.springframework.security.oauth2.client.web.server.ServerOAuth2Authori
 import org.springframework.web.reactive.function.client.WebClient;
 
 @SpringBootApplication
-public class SpringOAuth2Application {
+public class Application {
 
 	public static void main(String[] args) throws Throwable {
-		SpringApplication.run(SpringOAuth2Application.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 }
