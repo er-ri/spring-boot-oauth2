@@ -6,7 +6,7 @@ A sample user-password authentication login form together with OAuth2.0 of `Gith
 * Apache Maven 3.6.x
 
 ## Getting Started
-1. Download the project or using(`git clone https://github.com/er-ri/spring-boot-auth.git`).
+1. Download the project or using(`git clone https://github.com/er-ri/spring-boot-oauth2.git`).
 2. Replace `<client id>` and `<client secrety>` with yours OAuth app info in `src/main/resources/application.properties`.
 ```
 # OAuth2.0 for github
