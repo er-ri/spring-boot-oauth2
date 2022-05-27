@@ -23,13 +23,13 @@ public class UserEntity {
     
     @Column(
             name = "github_id",
-            nullable = false
+            nullable = true
     )
     private String githubId;
     
     @Column(
             name = "line_id",
-            nullable = false
+            nullable = true
     )
     private String lineId;
     

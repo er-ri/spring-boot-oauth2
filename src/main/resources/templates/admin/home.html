@@ -13,72 +13,72 @@
 <link rel="stylesheet" type="text/css"
 	th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}" />
 <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+<script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+<script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
 <title>Welcome!</title>
 </head>
 <body>
 	<div class="w3-top">
 		<div class="w3-bar w3-white w3-padding w3-card"
 			style="letter-spacing: 4px;">
-			<a href="/index" class="w3-bar-item w3-button">Home</a>
+			<a href="/" class="w3-bar-item w3-button">Home</a>
 			<!-- Right-sided navbar links. Hide them on small screens -->
 			<div class="w3-right w3-hide-small">
-				<a href="#about" class="w3-bar-item w3-button">About</a> <a
-					href="#menu" class="w3-bar-item w3-button">Menu</a> <a
-					href="#contact" class="w3-bar-item w3-button">Contact</a>
+				<a th:href="@{/register}" class="w3-bar-item w3-button">Register</a>
+				<a th:href="@{/h2-console}" class="w3-bar-item w3-button">H2 Console</a>
 			</div>
 		</div>
 	</div>
 
-	<!-- Header -->
-	<header class="w3-display-container w3-content w3-wide"
-		style="max-width: 1600px; min-width: 500px" id="home">
-		<div class="w3-display-bottomleft w3-padding-large w3-opacity">
-			<h1 class="w3-xxlarge">Le Catering</h1>
-		</div>
-	</header>
-
 	<!-- Page content -->
-	<div class="w3-content" style="max-width: 1100px">
+	<div class="w3-content" style="max-width: 1100px;margin-top:46px">
 		<!-- Contact Section -->
-		<div class="w3-container w3-padding-64" id="contact">
+		<div class="w3-container w3-padding-16" id="contact">
 			<h2 th:inline="text">Hello
 				[[${#httpServletRequest.remoteUser}]]!</h2>
 			<br>
-			<p th:text="${userName}">User Name</p>
-			<p th:text="${authorities}">Authorities</p>
-			<p th:text="${lineId}">Line ID</p>
+			<p class="w3-large" th:text="${userName}">User Name</p>
+			<p class="w3-large" th:text="${authorities}">Authorities</p>
+			<p class="w3-large" th:text="${lineId}">Line ID</p>
+			
 			<div th:if="${clientName}">
-				<p>
+				<p class="w3-large">
 					You are successfully logged in <span th:text="${oAuthUserName}"></span>
 					via the OAuth 2.0 Client <span th:text="${clientName}"></span><br>
 					Your accessToken is: <span th:text="${accessToken}"></span><br>
 				</p>
 			</div>
-
-
-			<div th:if="${clientName == 'LINE'}">
-				<div class="line-it-button" data-lang="en" data-type="friend"
-					data-env="REAL" data-lineId="@408ojspn" style="display: none;"></div>
-				<script
-					src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js"
-					async="async" defer="defer"></script>
-				<br> <a
-					th:href="@{https://line.me/R/oaMessage/@408ojspn/{id}(id=${userName})}">URL
-					scheme</a>
-				<form th:action="@{/push-message}" method="post">
-					<label for="message"><b>Push Message:</b></label> <input
-						type="text" placeholder="Input Message" name="message" /> <input
-						type="hidden" th:value="${userName}" name="username" /><input
-						type="submit" value="Push Message" class="read_more" />
+			
+			<div class="w3-center w3-section w3-circle">
+				<form th:action="@{/link-line}" method="post">
+					<input type="submit" value="Link @LINE" class="w3-button w3-light-green" />
 				</form>
 			</div>
-			<form th:action="@{/link-line}" method="post">
-				<input type="submit" value="Link Line" class="read_more" />
-			</form>
-			<form th:action="@{/logout}" method="post">
-				<input type="submit" value="Sign Out" class="read_more" />
-			</form>
 
+			<div th:if="${clientName == 'LINE'}" class="w3-center">
+				<div>
+					<div class="line-it-button" data-lang="en" data-type="friend"
+					data-env="REAL" data-lineId="@408ojspn" style="display: none;"></div><br>
+					<a th:href="@{https://line.me/R/oaMessage/@408ojspn/{id}(id=${userName})}">
+						Click URL scheme</a>
+
+				</div>
+				
+				<form th:action="@{/push-message}" method="post" class="w3-row w3-padding-32">
+					<input type="text" placeholder="Input Message" name="message" class="w3-input w3-border"/> 
+					<input type="hidden" th:value="${oAuthUserName}" name="username" />
+					<input type="submit" value="Push Message" class="w3-button w3-border w3-section w3-center" />
+				</form>
+				</div>
+			</div>
+			
+			<div class="w3-row-padding w3-padding-small">
+				<div class="w3-center w3-margin-bottom">
+					<form th:action="@{/logout}" method="post">
+						<input type="submit" value="Sign Out"  class="w3-button w3-gray" />
+					</form>
+				</div>
+			</div>
 
 		</div>
 	</div>

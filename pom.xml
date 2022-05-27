@@ -76,10 +76,10 @@
 			<artifactId>spring-security-oauth2-client</artifactId>
 		</dependency>
 
-<dependency>
-    <groupId>com.google.code.gson</groupId>
-    <artifactId>gson</artifactId>
-</dependency>
+		<dependency>
+    		<groupId>com.google.code.gson</groupId>
+    		<artifactId>gson</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>io.projectreactor</groupId>

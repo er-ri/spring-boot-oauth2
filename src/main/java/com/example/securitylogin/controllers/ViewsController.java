@@ -34,12 +34,12 @@ public class ViewsController {
 	@Autowired
 	LineAPIService lineAPIService;
 
-	@RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/", "/login" }, method = RequestMethod.GET)
 	public ModelAndView goHome(HttpServletRequest request) {
 		String ip = request.getRemoteAddr();
 		String userAgent = request.getHeader("User-Agent");
 
-		ModelAndView mav = new ModelAndView("index");
+		ModelAndView mav = new ModelAndView("login");
 		mav.addObject("ip", ip);
 		mav.addObject("ua", userAgent);
 
@@ -87,15 +87,23 @@ public class ViewsController {
 	}
 	
 	@RequestMapping(value = "/new", method = RequestMethod.POST)
-	public String register(@RequestParam(name = "username") String name,
-			@RequestParam(name = "password") String password, Model model) {
-		UserEntity user = new UserEntity();
-		user.setUserName(name);
-		user.setActive(true);
-		user.setPassword(password);
-		user.setAuthorities("ADMIN");
-		myUserDetailsService.addUser(user);
-		model.addAttribute("message", "User " + name + " has been created.");
+	public String register(Model model, 
+			@RequestParam(name = "username") String username,
+			@RequestParam(name = "password") String password,
+			@RequestParam(name = "password2") String password2) {
+		if(myUserDetailsService.findByUserName(username) != null) {
+			model.addAttribute("message", "The user has been already registered.");
+		} else if(password.equals(password2) == false) {
+			model.addAttribute("message", "Your password and confirmation password do not match.");
+		}else{
+			UserEntity user = new UserEntity();
+			user.setUserName(username);
+			user.setActive(true);
+			user.setPassword(password);
+			user.setAuthorities("ADMIN");
+			myUserDetailsService.addUser(user);
+			model.addAttribute("message", "User " + username + " has been created.");
+		}
 		return "register";
 	}
 }

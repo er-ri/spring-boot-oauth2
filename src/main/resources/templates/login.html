@@ -7,8 +7,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- mobile metas -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <!-- site metas -->
 <link rel="stylesheet" type="text/css"
 	th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}" />
@@ -19,25 +18,30 @@
 	<div class="w3-top">
 		<div class="w3-bar w3-white w3-padding w3-card"
 			style="letter-spacing: 4px;">
-			<a href="/index" class="w3-bar-item w3-button">Gourmet au Catering</a>
+			<a href="/" class="w3-bar-item w3-button">Home</a>
 			<!-- Right-sided navbar links. Hide them on small screens -->
 			<div class="w3-right w3-hide-small">
-				<a href="#about" class="w3-bar-item w3-button">About</a> <a
-					href="#menu" class="w3-bar-item w3-button">Menu</a> <a
-					href="#contact" class="w3-bar-item w3-button">Contact</a>
+				<a th:href="@{/register}" class="w3-bar-item w3-button">Register</a>
+				<a th:href="@{/h2-console}" class="w3-bar-item w3-button">H2 Console</a>
 			</div>
 		</div>
 	</div>
+	
 	<div class="w3-content" style="max-width: 1100px">
 		<!-- Login Section -->
-		<div class="w3-container w3-padding-64" id="contact">
+		<div class="w3-container w3-padding-64">
 			<h1>Login Form</h1>
-			<br>
-			<p th:if="${param.logout}" class="w3-text-blue-grey w3-large">You have been logged out.</p>
-			<p th:if="${param.error}" class="w3-text-blue-grey w3-large">Invalid username and password.</p>
-			<p>You can also contact us by phone 00553123-2323 or email
-				catering@catering.com, or you can send us a message here:</p>
+			<p class="w3-opacity">The Website implements OAuth2.0 using
+				spring-security. Register a new user to login to the Website or through
+				your Github or @Line account.</p>
+			<p class="w3-text-blue-grey w3-large">
+				<b th:text="${ip}">IP Address</b>
+			</p>
+			<p class="w3-large" th:text="${ua}">User-Agent</p>
+
 			<form th:action="@{/login}" method="post">
+				<p th:if="${param.logout}" class="w3-text-red w3-small">You have been logged out.</p>
+				<p th:if="${param.error}" class="w3-text-red w3-small">Invalid username and password.</p>
 				<p>
 					<input class="w3-input w3-padding-16" type="text"
 						placeholder="Enter Username" required name="username">
@@ -47,21 +51,13 @@
 						placeholder="Enter Password" required name="password">
 				</p>
 				<p>
-					<button class="w3-button w3-light-grey w3-section" type="submit">Sign
-						In</button>
+					<button class="w3-button w3-light-grey w3-section" type="submit">Sign In</button>
 				</p>
 			</form>
-			<a href="/login/oauth2/authorization/github">GitHub</a><br> 
-			<a href="/login/oauth2/authorization/line">@Line</a><br>
+			<p class="w3-opacity">Login with 3rd service through OAuth 2.0</p>
+			<button class="w3-button w3-gray" onclick="window.location.href='/login/oauth2/authorization/github';">Github</button>
+			<button class="w3-button w3-light-green" onclick="window.location.href='/login/oauth2/authorization/line';">@LINE</button>
 		</div>
 	</div>
-	<!-- Footer -->
-	<footer class="w3-center w3-light-grey w3-padding-32">
-		<p>
-			Powered by <a href="https://www.w3schools.com/w3css/default.asp"
-				title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a>
-		</p>
-	</footer>
-
 </body>
 </html>
