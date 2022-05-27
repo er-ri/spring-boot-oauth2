@@ -1,4 +1,4 @@
-# spring-boot-auth
+# spring-boot-oauth2
 A sample user-password authentication login form together with OAuth2.0 of `Github` and `@Line` using spring-boot-security.
 
 ## Environment
