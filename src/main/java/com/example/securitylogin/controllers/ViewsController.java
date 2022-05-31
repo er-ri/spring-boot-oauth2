@@ -74,6 +74,8 @@ public class ViewsController {
 		model.addAttribute("clientName", authorizedClient.getClientRegistration().getClientName());
 		model.addAttribute("oAuthUserAttributes", oAuthUser.getAttributes());
 		model.addAttribute("accessToken", authorizedClient.getAccessToken().getTokenValue());
+		model.addAttribute("firendFlag",
+				lineAPIService.getFriendshipFlag(authorizedClient.getAccessToken().getTokenValue()));
 		
 		return "admin/home";
 	}

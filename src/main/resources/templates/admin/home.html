@@ -57,6 +57,8 @@
 
 			<div th:if="${clientName == 'LINE'}" class="w3-center">
 				<div>
+					<p>Your friendflag is <span th:text="${firendFlag}" class="w3-large"></span>
+					</p>
 					<div class="line-it-button" data-lang="en" data-type="friend"
 					data-env="REAL" data-lineId="@408ojspn" style="display: none;"></div><br>
 					<a th:href="@{https://line.me/R/oaMessage/@408ojspn/{id}(id=${userName})}">

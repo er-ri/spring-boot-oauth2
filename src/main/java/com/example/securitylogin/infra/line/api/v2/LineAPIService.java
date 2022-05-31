@@ -14,6 +14,7 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import com.example.securitylogin.infra.line.api.v2.response.AccessToken;
+import com.example.securitylogin.infra.line.api.v2.response.FriendFlagStatus;
 import com.example.securitylogin.infra.line.api.v2.response.IdToken;
 import com.example.securitylogin.infra.utils.CommonUtils;
 import com.google.gson.Gson;
@@ -94,6 +95,24 @@ public class LineAPIService {
 		IdToken idToken = gson.fromJson(response.getBody(), IdToken.class);
 		
 		return idToken;
+	}
+	
+	public boolean getFriendshipFlag(String accessToken) {
+		HttpHeaders headers = new HttpHeaders();
+		MultiValueMap<String, String> body = new LinkedMultiValueMap<String, String>(); 
+		ResponseEntity<String> response = null;
+		
+		RestTemplate restTemplate = new RestTemplate();
+	    
+		String endpoint_url = "https://api.line.me/friendship/v1/status";
+		headers.setBearerAuth(accessToken);
+		
+		HttpEntity<Object> request = new HttpEntity<Object>(body, headers);
+		response = restTemplate.exchange(endpoint_url, HttpMethod.GET, request, String.class);
+		
+		FriendFlagStatus friendFlagStatus = gson.fromJson(response.getBody(), FriendFlagStatus.class);
+		
+		return friendFlagStatus.friendFlag;
 	}
 	
 	public void pushMessage(String userId, String message) {
